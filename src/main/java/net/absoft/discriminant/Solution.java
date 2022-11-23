@@ -1,9 +1,5 @@
 package net.absoft.discriminant;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
 public class Solution {
     private int a, b, c;
     private double d, x1, x2;
