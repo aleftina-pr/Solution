@@ -6,7 +6,11 @@ public class Solution {
 
 
     public Solution (int a, int b, int c) {
-        this.a = a;
+        if (a!=0) {
+            this.a = a;
+        } else {
+            return;
+        }
         this.b = b;
         this.c = c;
         d = b*b-4*a*c;
