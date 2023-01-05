@@ -4,32 +4,40 @@ import net.absoft.discriminant.Solution;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Map;
+
 public class SolutionTest {
+    private Solution discriminant;
+
+  public void setUp(){
+    discriminant = new Solution();
+        }
+
+
     @Test
     public void TestThatSolutionContainsDifferentValuesIfDiscriminantIsBigger0(){
-        Solution discriminant = new Solution(1,5,2);
-        Assert.assertNotNull(discriminant.getX1());
-        Assert.assertNotNull(discriminant.getX2());
-        Assert.assertNotEquals(discriminant.getX1(),discriminant.getX2(),"Discriminant shouldn't be equal to 0");
+        Map<String, Double> test = discriminant.solution(1,5,2);
+        Assert.assertNotNull(test);
+        Assert.assertEquals(2,test.size());
+        Assert.assertNotEquals(test.get("x1"),test.get("x2"),"Discriminant shouldn't be equal to 0");
     }
     @Test
     public void TestThatSolutionContainsSameValuesIfDiscriminantIs0(){
-        Solution discriminant = new Solution(1,4,4);
-        Assert.assertNotNull(discriminant.getX1());
-        Assert.assertNotNull(discriminant.getX2());
-        Assert.assertEquals(discriminant.getX1(),discriminant.getX2(),"Discriminant is not equal to 0!");
+        Map<String, Double> test = discriminant.solution(1,4,4);
+        Assert.assertEquals(test.get("x1"),test.get("x2"),"Discriminant is not equal to 0!");
     }
     @Test
     public void TestThatSolutionDoesNotExistIfDiscriminantIsLessThan0(){
-        Solution discriminant = new Solution(1,1,4);
-        Assert.assertNull(discriminant.getX1(),"Discriminant should be bigger or equal to 0");
-        Assert.assertNull(discriminant.getX2(), "Discriminant should be bigger or equal to 0");
+        Map<String, Double> test = discriminant.solution(1,1,4);
+        Assert.assertNull(test,"Discriminant should be bigger or equal to 0");
     }
-    @Test
-    public void TestThatEquasionIsQuadratic(){
-        Solution discriminant = new Solution(0,2,2);
-        Assert.assertNull(discriminant.getX1(),"a cannot be equal to 0!");
-        Assert.assertNull(discriminant.getX2(),"a cannot be equal to 0!");
+    @Test (
+            expectedExceptions = IllegalArgumentException.class,
+            expectedExceptionsMessageRegExp = "a cannot be 0!"
+    )
+    public void TestThatEquationIsQuadratic() throws IllegalArgumentException{
+        Map<String, Double> test = discriminant.solution(0,2,2);
+        Assert.assertNull(test,"a cannot be equal to 0!");
     }
 
 }
