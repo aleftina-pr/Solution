@@ -1,7 +1,7 @@
-package net.absoft.Discriminant;
+package net.absoft;
 
-import net.absoft.discriminant.Solution;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Map;
@@ -9,8 +9,10 @@ import java.util.Map;
 public class SolutionTest {
     private Solution discriminant;
 
-  public void setUp(){
-    discriminant = new Solution();
+    @BeforeMethod
+    public void setUp(){
+       discriminant = new Solution();
+       System.out.println("new test");
         }
 
 

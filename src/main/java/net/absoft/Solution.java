@@ -1,4 +1,4 @@
-package net.absoft.discriminant;
+package net.absoft;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,13 +6,16 @@ import java.util.Objects;
 
 public class Solution {
     private int a, b, c;
-    private static double d, x1, x2;
+    private double d, x1, x2;
 
 
-    public static Map<String, Double> solution(int a, int b, int c) {
+    public Map<String, Double> solution(int a, int b, int c) {
         if (a == 0) {
             throw new IllegalArgumentException("a cannot be 0!");
         }
+        this.a = a;
+        this.b =b;
+        this.c = c;
         d = b*b-4*a*c;
         if (d<0) {
             return null;
@@ -31,29 +34,11 @@ public class Solution {
 
     }
 
-    public Integer getA() {
-            return a;
-    }
-    public void setA() {
-        this.a = a;
-    }
-    public Integer getB() {
-        return b;
-    }
-    public void setB() {
-        this.b = b;
-    }
-    public Integer getC() {
-        return c;
-    }
-    public void setC() {
-        this.c =c;
-    }
-    public void setSolutionValues(double d, double x1, double x2){
+    /*public void setSolutionValues(double d, double x1, double x2){
         this.d=d;
         this.x1=x1;
         this.x2=x2;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
