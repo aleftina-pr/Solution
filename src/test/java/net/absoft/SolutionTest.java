@@ -12,7 +12,7 @@ public class SolutionTest {
     @BeforeMethod
     public void setUp(){
        discriminant = new Solution();
-       System.out.println("new test");
+       System.out.println(this);
         }
 
 
